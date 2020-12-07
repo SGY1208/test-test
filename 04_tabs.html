@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>读取并修改元素的属性</title>
+  <meta charset="utf-8" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #tab li {
+      float: left;
+      list-style: none;
+    }
+
+    #tab li a {
+      display: inline-block;
+      text-decoration: none;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #000;
+    }
+
+    #container {
+      position: relative;
+    }
+
+    #content1,
+    #content2,
+    #content3 {
+      width: 300px;
+      height: 100px;
+      padding: 30px;
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    #tab li:first-child,
+    #content1 {
+      background-color: #ffcc00;
+    }
+
+    #tab li:first-child+li,
+    #content2 {
+      background-color: #ff00cc;
+    }
+
+    #tab li:first-child+li+li,
+    #content3 {
+      background-color: #00ccff;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2>实现多标签页效果</h2>
+  <div class="tabs">
+    <ul id="tab">
+      <li>
+        <a href="javascript:;" data-click="tab" data-div="content1">10元套餐</a>
+      </li>
+      <li>
+        <a href="javascript:;" data-click="tab" data-div="content2">30元套餐</a>
+      </li>
+      <li>
+        <a href="javascript:;" data-click="tab" data-div="content3">50元包月</a>
+      </li>
+    </ul>
+    <div id="container">
+      <div id="content1" style="z-index:10">
+        10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+      </div>
+      <div id="content2">
+        30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+      </div>
+      <div id="content3">
+        50元包月详情：<br />&nbsp;每月无限量随心打
+      </div>
+    </div>
+  </div>
+  <script>
+    //DOM 4步
+    //1. 查找触发事件的元素
+    //本例中: 查找带有data-click属性，且属性值为tab的所有按钮
+    
+    //先定义变量zIndex，暂时等于10
+    //每点一个按钮zIndex就+1
+    //保证每次点按钮时,zIndex都比之前的值大！
+    
+    //2. 绑定事件处理函数
+    //为每个a绑定单击事件
+    
+        //this->当前正在点击的这个a元素
+        //3. 查找要修改的元素
+        //本例中: 找到当前a对应div
+        //3.1 从当前a自己身上的data-div属性中，获得保存的id名
+        
+                //this.dataset.div;
+        //3.2 用id名查找对应div
+        
+        //4. 修改元素
+        //本例中: 修改当前div的zIndex属性为最大值即可！
+        //4.1 先把zIndex变量值+1
+        
+        //4.2 设置元素的z-index属性值为本次的最大值zIndex。
+       
+        //相当于: <div style="z-index:xxx">
+    
+  </script>
+</body>
+
+</html>
